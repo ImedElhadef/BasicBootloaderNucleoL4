@@ -17,6 +17,7 @@
   */
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
+#include <stdio.h>
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -50,6 +51,21 @@ void SystemClock_Config(void);
 static void MX_GPIO_Init(void);
 static void MX_USART2_UART_Init(void);
 /* USER CODE BEGIN PFP */
+int _write(int file, char *ptr, int len)
+{
+	HAL_UART_Transmit(&huart2,(uint8_t*)ptr, len, HAL_MAX_DELAY);
+#ifdef SKIP
+	int DataIdx;
+
+	for (DataIdx = 0; DataIdx < len; DataIdx++)
+	{
+		__io_putchar(*ptr++);
+
+	}
+	return len;
+#endif
+	return len;
+}
 
 /* USER CODE END PFP */
 
@@ -96,7 +112,8 @@ int main(void)
   while (1)
   {
     /* USER CODE END WHILE */
-
+   printf("Hello World\r\n");
+   HAL_Delay(500);
     /* USER CODE BEGIN 3 */
   }
   /* USER CODE END 3 */
