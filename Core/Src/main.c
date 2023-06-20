@@ -18,6 +18,7 @@
 /* USER CODE END Header */
 /* Includes ------------------------------------------------------------------*/
 #include <stdio.h>
+#include "jumper.h"
 #include "main.h"
 
 /* Private includes ----------------------------------------------------------*/
@@ -104,7 +105,11 @@ int main(void)
   MX_GPIO_Init();
   MX_USART2_UART_Init();
   /* USER CODE BEGIN 2 */
+	printf("\r\n============= BL COM Init ==========\r\n");
 
+	printf("\r\n=============> Jump to application \r\n");
+
+	jump_to_application();
   /* USER CODE END 2 */
 
   /* Infinite loop */
