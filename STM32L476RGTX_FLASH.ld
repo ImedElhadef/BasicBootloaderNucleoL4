@@ -47,7 +47,7 @@ MEMORY
 {
   RAM    (xrw)    : ORIGIN = 0x20000000,   LENGTH = 96K
   RAM2    (xrw)    : ORIGIN = 0x10000000,   LENGTH = 32K
-  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 1024K
+  FLASH    (rx)    : ORIGIN = 0x8000000,   LENGTH = 32K
 }
 
 /* Sections */
@@ -173,6 +173,7 @@ SECTIONS
     . = . + _Min_Heap_Size;
     . = . + _Min_Stack_Size;
     . = ALIGN(8);
+    _eRAM = .;         /* define a global symbol at heap stack end */
   } >RAM
 
   /* Remove information from the compiler libraries */
